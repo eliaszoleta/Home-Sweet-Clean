@@ -1,0 +1,148 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-emerald-deep: var(--emerald-deep);
+  --color-gold-warm: var(--gold-warm);
+  --color-sand: var(--sand);
+  --font-serif-display: "Playfair Display", Georgia, serif;
+  --font-sans-luxury: "Nunito", system-ui, sans-serif;
+  --color-logo-coral: #52ade6;
+  --color-sky: var(--sky);
+  --color-heart: var(--heart);
+  --color-sun: var(--accent);
+  --color-blush: var(--blush);
+  --font-script: "Caveat", cursive;
+  --font-heading: "Fredoka", system-ui, sans-serif;
+}
+
+/* Home Sweet Clean palette (logo + flyer + Facebook cover):
+   cheerful blue from the logo, sunny yellow, pink hearts, warm white */
+:root {
+  --radius: 1.25rem;
+  --background: oklch(0.993 0.006 95);
+  --foreground: oklch(0.27 0.04 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.27 0.04 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.27 0.04 250);
+
+  /* Primary: logo blue, deepened for readable white text */
+  --primary: oklch(0.52 0.14 243);
+  --primary-foreground: oklch(0.99 0.004 95);
+
+  /* Secondary: soft sky */
+  --secondary: oklch(0.965 0.025 230);
+  --secondary-foreground: oklch(0.35 0.1 245);
+
+  --muted: oklch(0.97 0.012 95);
+  --muted-foreground: oklch(0.47 0.03 250);
+
+  /* Accent: sunshine yellow (dark text on top) */
+  --accent: oklch(0.87 0.16 92);
+  --accent-foreground: oklch(0.27 0.04 250);
+
+  --destructive: oklch(0.58 0.22 25);
+  --destructive-foreground: oklch(0.98 0.005 85);
+
+  --border: oklch(0.91 0.02 230);
+  --input: oklch(0.91 0.02 230);
+  --ring: oklch(0.52 0.14 243);
+
+  --emerald-deep: oklch(0.35 0.08 160);
+  --gold-warm: oklch(0.87 0.16 92);
+  --sand: oklch(0.96 0.03 95);
+  --blush: #fde68a;
+  --sky: #52ade6;
+  --heart: #ec4899;
+}
+
+.dark {
+  --background: oklch(0.14 0.02 240);
+  --foreground: oklch(0.97 0.005 85);
+  --card: oklch(0.18 0.025 240);
+  --card-foreground: oklch(0.97 0.005 85);
+  --popover: oklch(0.18 0.025 240);
+  --popover-foreground: oklch(0.97 0.005 85);
+
+  --primary: oklch(0.85 0.08 80);
+  --primary-foreground: oklch(0.15 0.03 240);
+
+  --secondary: oklch(0.24 0.025 240);
+  --secondary-foreground: oklch(0.97 0.005 85);
+
+  --muted: oklch(0.22 0.02 240);
+  --muted-foreground: oklch(0.65 0.02 240);
+
+  --accent: oklch(0.78 0.11 75);
+  --accent-foreground: oklch(0.14 0.02 240);
+
+  --destructive: oklch(0.65 0.2 25);
+  --destructive-foreground: oklch(0.98 0.005 85);
+
+  --border: oklch(0.26 0.02 240);
+  --input: oklch(0.26 0.02 240);
+  --ring: oklch(0.78 0.11 75);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans-luxury);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.005em;
+  }
+  .font-script {
+    font-family: var(--font-script);
+    letter-spacing: 0;
+  }
+  .font-serif-luxury {
+    font-family: var(--font-serif-display);
+    letter-spacing: -0.02em;
+  }
+  .font-hero {
+    font-family: var(--font-serif-display) !important;
+    letter-spacing: -0.02em;
+  }
+}

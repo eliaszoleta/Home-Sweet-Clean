@@ -63,10 +63,10 @@ const STEPS = [
 ];
 
 /**
- * The home page layout. `heroAside` replaces the hero photo collage on the right (used by /demo
- * to show the cleaning cost estimator); everything else is shared so both pages stay in sync.
+ * The home page layout. `quoteWidget` replaces the quote form (used by /demo to show the Clean
+ * Estimator); everything else is shared so both pages stay in sync.
  */
-export function HomePage({ heroAside }: { heroAside?: ReactNode }) {
+export function HomePage({ quoteWidget }: { quoteWidget?: ReactNode }) {
   return (
     <div className="space-y-20 md:space-y-28">
       {/* Hero */}
@@ -138,38 +138,34 @@ export function HomePage({ heroAside }: { heroAside?: ReactNode }) {
             </ul>
           </div>
 
-          {heroAside ? (
-            <div className="lg:col-span-6 relative">{heroAside}</div>
-          ) : (
-            <div className="lg:col-span-6 relative pb-10 sm:pb-0">
-              <div className="relative rounded-[2rem] overflow-hidden border-[6px] border-white shadow-2xl aspect-[4/3.3] bg-[#fcd34d]">
-                <img
-                  src="/images/house-cleaning-services-evansville-in.jpg"
-                  alt="Sparkling clean kitchen and living room after house cleaning services in Evansville, IN"
-                  className="w-full h-full object-cover"
-                  loading="eager"
-                />
-              </div>
-              <figure className="absolute -bottom-6 -left-2 sm:-left-8 w-[58%] sm:w-[52%] bg-white p-2 pb-3 rounded-2xl shadow-xl -rotate-3">
-                <img
-                  src="/images/home-sweet-clean-owners-evansville-in.jpg"
-                  alt="Illustration of the Home Sweet Clean team in Evansville"
-                  className="w-full aspect-[3/1.5] object-cover object-top rounded-xl"
-                />
-                <figcaption className="font-script text-xl text-center text-foreground mt-1">
-                  Your local cleaning team ♥
-                </figcaption>
-              </figure>
-              <div className="absolute -top-5 -right-2 sm:-right-5 w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-heart text-white flex flex-col items-center justify-center text-center rotate-12 shadow-xl p-3">
-                <span className="font-heading font-bold text-lg leading-tight">
-                  New Client Special!
-                </span>
-                <span className="text-xs font-semibold leading-tight mt-1">
-                  Book your first clean &amp; save
-                </span>
-              </div>
+          <div className="lg:col-span-6 relative pb-10 sm:pb-0">
+            <div className="relative rounded-[2rem] overflow-hidden border-[6px] border-white shadow-2xl aspect-[4/3.3] bg-[#fcd34d]">
+              <img
+                src="/images/house-cleaning-services-evansville-in.jpg"
+                alt="Sparkling clean kitchen and living room after house cleaning services in Evansville, IN"
+                className="w-full h-full object-cover"
+                loading="eager"
+              />
             </div>
-          )}
+            <figure className="absolute -bottom-6 -left-2 sm:-left-8 w-[58%] sm:w-[52%] bg-white p-2 pb-3 rounded-2xl shadow-xl -rotate-3">
+              <img
+                src="/images/home-sweet-clean-owners-evansville-in.jpg"
+                alt="Illustration of the Home Sweet Clean team in Evansville"
+                className="w-full aspect-[3/1.5] object-cover object-top rounded-xl"
+              />
+              <figcaption className="font-script text-xl text-center text-foreground mt-1">
+                Your local cleaning team ♥
+              </figcaption>
+            </figure>
+            <div className="absolute -top-5 -right-2 sm:-right-5 w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-heart text-white flex flex-col items-center justify-center text-center rotate-12 shadow-xl p-3">
+              <span className="font-heading font-bold text-lg leading-tight">
+                New Client Special!
+              </span>
+              <span className="text-xs font-semibold leading-tight mt-1">
+                Book your first clean &amp; save
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -311,16 +307,22 @@ export function HomePage({ heroAside }: { heroAside?: ReactNode }) {
       <section id="quote-section" className="scroll-mt-32 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto space-y-3 mb-10">
           <p className="font-script text-3xl text-heart">Let us handle the mess</p>
-          <h2 className="text-3xl sm:text-5xl font-bold text-foreground">Get Your Free Quote</h2>
+          <h2 className="text-3xl sm:text-5xl font-bold text-foreground">
+            {quoteWidget ? "Get Your Instant Estimate" : "Get Your Free Quote"}
+          </h2>
           <p className="text-muted-foreground">
-            Fill out the form, or call or text{" "}
+            {quoteWidget ? "Answer a few quick questions" : "Fill out the form"}, or call or text{" "}
             <a href={PHONE_HREF} className="font-bold text-primary">
               {BUSINESS_INFO.phone}
             </a>
             . New clients: ask about saving on your first cleaning!
           </p>
         </div>
-        <QuoteRequestForm />
+        {quoteWidget ? (
+          <div className="max-w-4xl mx-auto">{quoteWidget}</div>
+        ) : (
+          <QuoteRequestForm />
+        )}
       </section>
 
       {/* Areas */}
